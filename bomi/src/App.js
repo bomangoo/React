@@ -1,12 +1,11 @@
 import React from 'react';
 import MyComponent from './MyComponent';
+import Counter from './Counter';
 
 const App = () => {
   return (
-    <MyComponent name="얍얍얍" favoriteNumber={4}>
-      리액트
-    </MyComponent>
+    <Counter />
   );
 };
-
+ 
 export default App;

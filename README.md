@@ -11,3 +11,6 @@ https://github.com/bomangoo/React/blob/master/ex2/src/Counter.js
 https://github.com/bomangoo/React/blob/master/ex2/src/Say.js
 
 
+**ex3 - REF 연결 input focus 효과
+https://github.com/bomangoo/React/blob/master/ex3/src/EventPractice.js
+https://github.com/bomangoo/React/blob/master/ex3/src/ValidationSample.js

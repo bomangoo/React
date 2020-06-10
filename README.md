@@ -17,4 +17,5 @@ https://github.com/bomangoo/React/blob/master/ex3/src/ValidationSample.js
 https://github.com/bomangoo/React/blob/master/ex3/src/ScrollBox.js
 
 
-**ex4 - 
+**ex4 - 데이터 배열 (map, filter 사용)
+https://github.com/bomangoo/React/blob/master/ex4/src/IterationSample.js

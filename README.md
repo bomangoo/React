@@ -18,8 +18,16 @@ https://github.com/bomangoo/React/blob/master/ex3/src/ScrollBox.js
 
 
 **ex4 - 데이터 배열 (map, filter 사용)
+
 https://github.com/bomangoo/React/blob/master/ex4/src/IterationSample.js
 
 
 **ex5 - 라이프사이클 예제
+
 https://github.com/bomangoo/React/blob/master/ex5/src/LifeCycleSample.js
+
+
+**ex6 - useState / useEffect (라이프사이클 적용)
+
+https://github.com/bomangoo/React/blob/master/ex6/src/Counter.js
+https://github.com/bomangoo/React/blob/master/ex6/src/Info.js

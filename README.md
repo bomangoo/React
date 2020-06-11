@@ -31,3 +31,9 @@ https://github.com/bomangoo/React/blob/master/ex5/src/LifeCycleSample.js
 
 https://github.com/bomangoo/React/blob/master/ex6/src/Counter.js
 https://github.com/bomangoo/React/blob/master/ex6/src/Info.js
+
+
+**ex7 - useReducer로 함수 재작성
+
+https://github.com/bomangoo/React/blob/master/ex7/src/Counter.js
+https://github.com/bomangoo/React/blob/master/ex7/src/Info.js

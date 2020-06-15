@@ -1,22 +1,12 @@
-import React, { useReducer } from 'react';
-
-function reducer(state, action) {
-    return {
-        ...state,
-        [action.name]: action.value,
-    }
-}
+import React from 'react';
+import useInputs from './useInputs';
 
 const Info = () => {
-    const [state, dispatch] = useReducer(reducer, {
+    const [state, onChange] = useInputs({
         name: '',
-        nickname: ''
-    });
+        nickname: '',
+    })
     const { name, nickname } = state;
-
-    const onChange = e => {
-        dispatch(e.target); //값 자체를 액션값으로 사용.
-    }
 
     return (
         <div>
@@ -25,14 +15,17 @@ const Info = () => {
                 <input name="nickname" value={nickname} onChange={onChange} />
             </div>
             <div>
-                <b>이름: </b> {name}
+                <div>
+                    <b>이름:</b> {name}
+                </div>
             </div>
             <div>
-                <b>닉네임: </b> {nickname}
+                <div>
+                    <b>닉네임:</b> {nickname}
+                </div>
             </div>
         </div>
     )
-
 }
 
 export default Info;

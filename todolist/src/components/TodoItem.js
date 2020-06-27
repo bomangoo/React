@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { MdDone, MdDelete } from 'react-icons/md';
+import { MdDone, MdDelete, MdBuild } from 'react-icons/md';
 import { useTodoDispatch } from '../TodoContext';
+
+const Edit = styled.div`
+    display: flex;
+    margin-right: 10px;
+    color: #dee2e6;
+    font-size: 24px;
+    cursor: pointer;
+    &:hover{
+        color: #6d5dff;
+    }
+    display: none;
+`;
 
 const Remove = styled.div`
     display: flex;
@@ -21,7 +33,7 @@ const TodoItemBlock = styled.div`
     align-items: center;
     padding: 12px 0;
     &:hover{
-        ${Remove}{
+        ${Remove},${Edit}{
             display: initial;
         }
     }
@@ -58,8 +70,21 @@ const Text = styled.div`
         `
     }
 `;
+const Editinput = styled.input`
+    display: block;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    box-sizing: border-box;
+`
 
 function TodoItem({ id, done, text }) {
+    const [open, setOpen] = useState(false);
+    const onEdit = () => setOpen(!open);
+
     const dispatch = useTodoDispatch();
     const onToggle = () => dispatch({ type: 'TOGGLE', id });
     const onRemove = () => dispatch({ type: 'REMOVE', id });
@@ -67,9 +92,16 @@ function TodoItem({ id, done, text }) {
         <TodoItemBlock>
             <CheckCircle done={done} onClick={onToggle}>{done && <MdDone />}</CheckCircle>
             <Text done={done}>{text}</Text>
+            <Edit open={open} onClick={onEdit}>
+                <MdBuild />
+            </Edit>
             <Remove onClick={onRemove}>
                 <MdDelete />
             </Remove>
+            {open && (
+                <Editinput autoFocus
+                    value={text} />
+            )}
         </TodoItemBlock>
     )
 }

@@ -4,7 +4,8 @@ import { MdDone, MdDelete, MdBuild } from 'react-icons/md';
 import { useTodoDispatch } from '../TodoContext';
 
 const Edit = styled.div`
-    display: flex;
+    display: block;
+    float: right;
     margin-right: 10px;
     color: #dee2e6;
     font-size: 24px;
@@ -16,9 +17,7 @@ const Edit = styled.div`
 `;
 
 const Remove = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    float: right;
     color: #dee2e6;
     font-size: 24px;
     cursor: pointer;
@@ -29,8 +28,10 @@ const Remove = styled.div`
 `;
 
 const TodoItemBlock = styled.div`
-    display: flex;
-    align-items: center;
+    display: block;
+    clear: both;
+    width: 100%;
+    overflow: hidden;
     padding: 12px 0;
     &:hover{
         ${Remove},${Edit}{
@@ -45,11 +46,10 @@ const CheckCircle = styled.div`
     border-radius: 16px;
     border: 1px solid #ced4da;
     font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    float: left;
     margin-right: 20px;
     cursor: pointer;
+    text-align: center;
     ${props =>
         props.done &&
         css`
@@ -60,7 +60,7 @@ const CheckCircle = styled.div`
 `;
 
 const Text = styled.div`
-    flex: 1;
+    float: left;
     font-size: 21px;
     color: #495047;
     ${props =>
@@ -70,37 +70,60 @@ const Text = styled.div`
         `
     }
 `;
+const Editwrap = styled.div`
+    clear: both;
+    width: 100%;
+    overflow: hidden;
+`;
 const Editinput = styled.input`
-    display: block;
+    width: 60%;
     padding: 12px;
+    margin: 5px 0;
+    margin-left: 10%;
     border-radius: 4px;
     border: 1px solid #dee2e6;
-    width: 100%;
     outline: none;
     font-size: 18px;
     box-sizing: border-box;
+    color: #666;
+`
+const EditBtn = styled.button`
+    width: 20%;
+    background: red;
+    border-radius: 5px;
+    padding: 12px 0;
+    margin: 5px 0;
+    vertical-align: top;
+    color: #fff;
+    outline: none;
+    cursor: pointer
 `
 
 function TodoItem({ id, done, text }) {
     const [open, setOpen] = useState(false);
-    const onEdit = () => setOpen(!open);
+    const onEditOpen = () => setOpen(!open);
 
     const dispatch = useTodoDispatch();
     const onToggle = () => dispatch({ type: 'TOGGLE', id });
     const onRemove = () => dispatch({ type: 'REMOVE', id });
+    const onChange = () => dispatch({ type: 'CHANGE', id })
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={onToggle}>{done && <MdDone />}</CheckCircle>
             <Text done={done}>{text}</Text>
-            <Edit open={open} onClick={onEdit}>
-                <MdBuild />
-            </Edit>
             <Remove onClick={onRemove}>
                 <MdDelete />
             </Remove>
+            <Edit open={open} onClick={onEditOpen}>
+                <MdBuild />
+            </Edit>
             {open && (
-                <Editinput autoFocus
-                    value={text} />
+                <Editwrap>
+                    <Editinput autoFocus
+                        onChange={onChange}
+                        value={text} />
+                    <EditBtn>수정완료</EditBtn>
+                </Editwrap>
             )}
         </TodoItemBlock>
     )

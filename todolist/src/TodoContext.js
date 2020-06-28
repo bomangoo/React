@@ -33,6 +33,10 @@ function todoReducer(state, action) {
             );
         case 'REMOVE':
             return state.filter(todo => todo.id !== action.id);
+        case 'CHANGE':
+            return state.map(todo =>
+                todo.id === action.id ? { ...todo, text: todo.text } : todo,
+            );
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
     }

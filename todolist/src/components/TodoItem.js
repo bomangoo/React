@@ -101,12 +101,22 @@ const EditBtn = styled.button`
 
 function TodoItem({ id, done, text }) {
     const [open, setOpen] = useState(false);
-    const onEditOpen = () => setOpen(!open);
+    const [edit, setEdit] = useState(false);
+    const [value, setValue] = useState(text);
 
     const dispatch = useTodoDispatch();
+
+    const onEditToggle = () => {
+        setOpen(!open); //수정창 열리고 닫히는 토글 이벤트
+        setEdit(!edit); //edit true
+    }
     const onToggle = () => dispatch({ type: 'TOGGLE', id });
     const onRemove = () => dispatch({ type: 'REMOVE', id });
-    const onChange = () => dispatch({ type: 'CHANGE', id })
+    const onChange = () => dispatch({ type: 'CHANGE', id });
+    const onEdit = e => {
+        setValue(e.target.value);
+        setOpen(false); //수정창 닫힘 이벤트
+    }
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={onToggle}>{done && <MdDone />}</CheckCircle>
@@ -114,20 +124,19 @@ function TodoItem({ id, done, text }) {
             <Remove onClick={onRemove}>
                 <MdDelete />
             </Remove>
-            <Edit open={open} onClick={onEditOpen}>
+            <Edit open={open} onClick={onEditToggle}>
                 <MdBuild />
             </Edit>
             {open && (
                 <Editwrap>
                     <Editinput autoFocus
                         onChange={onChange}
-                        value={text} />
-                    <EditBtn>수정완료</EditBtn>
+                        value={value} />
+                    <EditBtn onClick={onEdit}>수정완료</EditBtn>
                 </Editwrap>
             )}
         </TodoItemBlock>
     )
 }
-
 
 export default React.memo(TodoItem);

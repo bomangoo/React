@@ -5,8 +5,15 @@ class TodoList extends Component {
         const { data, onUpdate, onRemove } = this.props;
 
         return (
-            <TodoItem data={data} onUpdate={onUpdate} onRemove={onRemove} />
-        )
+            <div>
+                {data.map((data) => (
+                    <TodoItem data={data}
+                        onUpdate={onUpdate}
+                        onRemove={onRemove}
+                    />
+                ))}
+            </div>
+        );
     }
 }
 

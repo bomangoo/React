@@ -4,38 +4,67 @@ import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 
 class App extends Component {
-  id = 4;
+  id = 5;
   state = {
-    toDoList: [
+    todos: [
       {
         id: 1,
-        text: '리액트 공부',
+        todo: '리액트 공부',
       },
       {
         id: 2,
-        text: '인강듣기',
+        todo: '인강듣기',
       },
       {
         id: 3,
-        text: '포트폴리오 제작',
+        todo: '포트폴리오 제작',
       },
       {
         id: 4,
-        text: '면접준비',
+        todo: '면접준비',
       },
     ],
     search: '',
   };
 
-  todoCreate = () => { };
-  todoUpdate = (id, text) => { };
-  todoRemove = (id) => { };
+  todoCreate = (data) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.concat({
+        id: this.id++,
+        ...data,
+      })
+    })
+  };
+  todoUpdate = (id, data) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.map((todos) => {
+        console.log(todos);
+        if (todos.id === id) {
+          console.log(todos.id + '/' + id);
+          return {
+            id,
+            ...data,
+          };
+        }
+        return todos;
+      })
+    })
+  };
+  todoRemove = (id) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.filter((data) => data.id !== id),
+    })
+  };
+
   render() {
-    const { toDoList } = this.state;
+    const { todos } = this.state;
     return (
       <TodoTemplate>
         <TodoInsert onCreate={this.todoCreate} />
-        <TodoList data={toDoList} onUpdate={todoUpdate} onRemove={todoRemove} />
+        <TodoList data={todos} onUpdate={this.todoUpdate} onRemove={this.todoRemove} />
       </TodoTemplate>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import TodoTemplate from './component/todotemplate';
-import TodoList from './component/todolist';
+import TodoTemplate from './component/TodoTemplate';
+import TodoInsert from './component/TodoInsert';
+import TodoList from './component/TodoList';
 
 class App extends Component {
   id = 4
@@ -34,7 +35,8 @@ class App extends Component {
   render() {
     const { todos } = this.state;
     return (
-      <TodoTemplate>
+      <TodoTemplate >
+        <TodoInsert />
         <TodoList todos={todos} />
       </TodoTemplate>
     )

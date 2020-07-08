@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
+import TodoItem from './component/TodoItem';
 
-class TodoList extends Component {
+class TodoLists extends Component {
     render() {
-        const list = todos.map(
-            (todo) => (
-                <TodoItem
-                    {...todo}
-                    onToggle={onToggle}
-                    onRemove={onRemove}
-                    ket={todo.id}
-                />
-            )
-        )
         return (
-            <div>{list}</div>
+            <div>
+                <TodoItem text="안녕" />
+            </div>
         )
     }
 }
 
-export default TodoList;
+export default TodoLists;

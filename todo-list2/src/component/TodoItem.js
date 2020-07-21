@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 
 class TodoItem extends Component {
     render() {
+        const { text } = this.props;
         return (
-            <div> {text}</div >
+            <div >
+                <div> {text} </div >
+            </div>
         )
     }
 }

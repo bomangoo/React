@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TodoTemplate from './component/TodoTemplate';
 import TodoInsert from './component/TodoInsert';
-import TodoList from './component/TodoList';
+import TodoItemList from './component/TodoItemList';
 
 class App extends Component {
   id = 4
@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <TodoTemplate >
         <TodoInsert />
-        <TodoList todos={todos} />
+        <TodoItemList todos={todos} />
       </TodoTemplate>
     )
   }

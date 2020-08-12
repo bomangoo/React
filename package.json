@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/bomangoo/React.git",
   "author": "bomangoo <mocona000@naver.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "create-react-app": "^3.4.1"
+  }
 }

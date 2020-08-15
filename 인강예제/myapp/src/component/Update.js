@@ -14,7 +14,6 @@ class Update extends Component {
         this.setState({[e.target.name]:e.target.value})
     }
     render(){
-        console.log(this.props.data)
         return(
             <article>
                 <h2>Update</h2>
